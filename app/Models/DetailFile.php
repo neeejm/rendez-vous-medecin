@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class DetailFile extends Model
+{
+    use HasFactory;
+
+    protected $table = 'detail_files';
+
+    protected $primaryKey = 'df_id';
+
+    protected $fillable = [
+        'rv_id',
+        'file',
+    ];
+}
