@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\User;
+use App\Models\Doctor;
 
 class CreateDoctorsTable extends Migration
 {
@@ -20,12 +22,14 @@ class CreateDoctorsTable extends Migration
             $table->string('lname');
             $table->string('phone_num');
             $table->string('fax_num');
-            $table->text('comment');
-            $table->string('img');
+            $table->text('comment')->nullable();
+            $table->string('img')->nullable();
             $table->boolean('gender');
+            $table->boolean('is_valid')->default(false);
             $table->timestamps();
             $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
         });
+
     }
 
     /**

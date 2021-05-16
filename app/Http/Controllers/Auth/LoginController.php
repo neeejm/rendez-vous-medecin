@@ -38,9 +38,7 @@ class LoginController extends Controller
 
     protected function authenticated($request, $user)
     {
-        if($user->is_admin) {
-            return redirect('admin');
-        }
+
         return redirect('profile');
     }
 }

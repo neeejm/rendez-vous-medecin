@@ -18,4 +18,24 @@ class Tarif extends Model
         'title',
         'price',
     ];
+
+    /**
+     * Get the doctor that owns the Tarif
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function doctor(): BelongsTo
+    {
+        return $this->belongsTo(Doctor::class);
+    }
+
+    /**
+     * Get all of the rendezVous for the Tarif
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function rendezVous(): HasMany
+    {
+        return $this->hasMany(RendezVous::class);
+    }
 }

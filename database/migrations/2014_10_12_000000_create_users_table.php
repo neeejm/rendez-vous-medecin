@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->boolean('is_admin')->default(false);
+            $table->boolean('user_type')->default(config('global.client'));
             $table->rememberToken();
             $table->timestamps();
         });

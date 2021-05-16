@@ -17,4 +17,14 @@ class DetailFile extends Model
         'rv_id',
         'file',
     ];
+
+    /**
+     * Get the rendezVous that owns the DetailFile
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function rendezVous(): BelongsTo
+    {
+        return $this->belongsTo(RendezVous::class);
+    }
 }

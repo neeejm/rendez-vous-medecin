@@ -1,14 +1,21 @@
 @extends('layouts.app')
 
+@section('head_content')
+    <!-- Scripts -->
+    <script src="{{ asset('js/bootstrap-select.js') }}" defer></script>
+    <!-- Styles -->
+    <link href="{{ asset('css/bootstrap-select.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">{{ __('Postulation') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('apply') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -104,6 +111,70 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="fax_num" class="col-md-4 col-form-label text-md-right">{{ __('Numero de fax') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="fax_num" type="tel" class="form-control @error('fax_num') is-invalid @enderror" name="fax_num" value="{{ old('fax_num') }}" placeholder = "0510158769" autocomplete="fax_num" autofocus>
+
+                                @error('fax_num')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">{{ __('Spécilaté') }}</label>
+                            <div class="col-md-6">
+                                <select class="selectpicker form-control" name="sps[]" multiple data-live-search="true" >
+                                    @foreach ($sps as $item)
+                                        <option value="{{ $item->sp_id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div> 
+
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">{{ __('Ville') }}</label>
+                            <div class="col-md-6">
+                                <select class="selectpicker form-control" name="city">
+                                    @foreach ($cs as $item)
+                                        <option value="{{ $item->ci_id }}">{{ $item->ci_id }} -+- {{ $item->city }}</option>
+                                    @endforeach
+                                  </select>
+                            </div>
+                        </div> 
+
+                        <div class="form-group row">
+                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Addresse') }}</label>
+
+                            <div class="col-md-6">
+                                <textarea id="address" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" placeholder = "Exemple: 11, Avenue du 16 Novembre" required autocomplete="address" autofocus></textarea>
+
+                                @error('address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="zip" class="col-md-4 col-form-label text-md-right">{{ __('Zip') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="zip" class="form-control @error('zip') is-invalid @enderror" name="zip" value="{{ old('zip') }}" placeholder = "10100" required autocomplete="zip" autofocus>
+
+                                @error('zip')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">{{ __('Sexe') }}</label>
 
                             <div class="col-md-6">
@@ -124,11 +195,11 @@
                                 @enderror
                             </div>
                         </div>
-
+                          
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Enregistrer') }}
+                                    {{ __('Postuler') }}
                                 </button>
                             </div>
                         </div>
@@ -138,4 +209,4 @@
         </div>
     </div>
 </div>
-@endsection
+@endsection 

@@ -17,4 +17,14 @@ class DetailImage extends Model
         'rv_id',
         'img',
     ];
+
+    /**
+     * Get the rendezVous that owns the DetailImage
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function rendezVous(): BelongsTo
+    {
+        return $this->belongsTo(RendezVous::class);
+    }
 }

@@ -15,9 +15,28 @@ class Address extends Model
 
     protected $fillable = [
         'doc_id',
-        'city',
+        'ci_id',
         'zip',
         'address',
     ];
 
+    /**
+     * Get the doctor that owns the Address
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function doctor(): BelongsTo
+    {
+        return $this->belongsTo(Doctor::class);
+    }
+
+    /**
+     * Get the city that owns the Address
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function city(): BelongsTo
+    {
+        return $this->belongsTo(City::class);
+    }
 }

@@ -21,8 +21,23 @@ class Client extends Model
         'gender',
     ];
 
-    public function user()
+    /**
+     * Get the user that owns the Client
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user(): BelongsTo
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get all of the rendezVous for the Client
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function rendezVous(): HasMany
+    {
+        return $this->hasMany(RendezVous::class);
     }
 }

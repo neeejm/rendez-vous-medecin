@@ -1,5 +1,12 @@
 @extends('layouts.app')
 
+@section('head_content')
+    <!-- Scripts -->
+    <script src="{{ asset('js/bootstrap-select.js') }}" defer></script>
+    <!-- Styles -->
+    <link href="{{ asset('css/bootstrap-select.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -10,6 +17,20 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
+
+                        {{-- <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">{{ __('') }}</label>
+                            <div class="col-md-6">
+                                <select class="selectpicker form-control" name="user_type">
+                                        <option value="0">
+                                            Client
+                                        </option>
+                                        <option value="1">
+                                            Doctor
+                                        </option>
+                                  </select>
+                            </div>
+                        </div>  --}}
 
                         <div class="form-group row">
                             <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>

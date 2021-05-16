@@ -17,4 +17,24 @@ class Calendar extends Model
         'date_time',
         'is_free',
     ];
+
+    /**
+     * Get the doctor that owns the Calendar
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function doctor(): BelongsTo
+    {
+        return $this->belongsTo(Doctor::class);
+    }
+
+    /**
+     * Get all of the rendezVous for the Calendar
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function rendezVous(): HasMany
+    {
+        return $this->hasMany(RendezVous::class);
+    }
 }
