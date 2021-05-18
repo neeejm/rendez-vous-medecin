@@ -14,6 +14,7 @@ class Calendar extends Model
     protected $primaryKey = 'dt_id';
 
     protected $fillable = [
+        'doc_id',
         'date_time',
         'is_free',
     ];

@@ -24,12 +24,13 @@
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @if (Route::has('apply'))
-                        <a href="{{ route('apply') }}" class="text-sm text-gray-700 underline">Postuler</a>
-                    @endif
                     @auth
                         <a href="{{ url('/home') }}" class="ml-4 text-sm text-gray-700 underline">Home</a>
                     @else
+                        @if (Route::has('apply'))
+                            <a href="{{ route('apply') }}" class="text-sm text-gray-700 underline">Postuler</a>
+                        @endif
+
                         <a href="{{ route('login') }}" class="ml-4 text-sm text-gray-700 underline">Log in</a>
 
                         @if (Route::has('register'))

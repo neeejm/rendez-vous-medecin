@@ -43,7 +43,6 @@ class ApproveController extends Controller
         }
         DB::commit();
         return $this->index();
-        return $this->index();
     }
 
     public function deny($id)

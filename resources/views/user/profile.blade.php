@@ -8,11 +8,12 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
+
+                    @isset($_GET['status']) 
                         <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                            {{ $_GET['status'] }}
                         </div>
-                    @endif
+                    @endisset
 
                     {{-- {{ Auth::user()->user_type }} --}}
                     @if ( Auth::user()->user_type == config('global.admin') ) 

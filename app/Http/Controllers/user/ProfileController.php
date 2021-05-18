@@ -4,6 +4,8 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use App\Models\Client;
+use App\Models\RendezVous;
+use App\Models\Doctor;
 use Auth;
 use Illuminate\Http\Request;
 

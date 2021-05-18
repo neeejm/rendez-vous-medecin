@@ -21,10 +21,10 @@
                                         {{ $doc->doc_id }}
 
                                 <div>
-                                    <a href="{{ action([App\Http\Controllers\User\ApproveController::class, 'approve'], ['id' =>$doc->doc_id,]) }}" class="btn btn-primary active" role="button" aria-pressed="true">
+                                    <a href="{{ action([App\Http\Controllers\User\ApproveController::class, 'approve'], ['id' => $doc->doc_id,]) }}" class="btn btn-primary active" role="button" aria-pressed="true">
                                         Approve
                                     </a>
-                                    <a href="{{ action([App\Http\Controllers\User\ApproveController::class, 'deny'], ['id' =>$doc->doc_id,]) }}" class="btn btn-secondary active" role="button" aria-pressed="true">
+                                    <a href="{{ action([App\Http\Controllers\User\ApproveController::class, 'deny'], ['id' => $doc->doc_id,]) }}" class="btn btn-secondary active" role="button" aria-pressed="true">
                                         Deny
                                     </a>
                                 </div>

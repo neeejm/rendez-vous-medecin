@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Auth;
 
-class AdminChecker
+class DoctorChecker
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class AdminChecker
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->user_type == config('global.admin'))
+        if (Auth::user()->user_type == config('global.doctor'))
             return $next($request);
 
         return redirect()->back();

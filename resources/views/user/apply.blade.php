@@ -11,7 +11,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card mt-4">
                 <div class="card-header">{{ __('Postulation') }}</div>
 
                 <div class="card-body">
@@ -140,7 +140,7 @@
                             <div class="col-md-6">
                                 <select class="selectpicker form-control" name="city">
                                     @foreach ($cs as $item)
-                                        <option value="{{ $item->ci_id }}">{{ $item->ci_id }} -+- {{ $item->city }}</option>
+                                        <option value="{{ $item->ci_id }}">{{ $item->city }}</option>
                                     @endforeach
                                   </select>
                             </div>

@@ -20,7 +20,7 @@ class CreateRendezVousesTable extends Migration
             $table->unsignedBigInteger('client_id');
             $table->unsignedBigInteger('dt_id');
             $table->text('reasons');
-            $table->text('doc_detail');
+            $table->text('doc_detail')->nullable();
             $table->integer('state');
             $table->foreign('doc_id')->references('doc_id')->on('doctors')->onDelete('cascade');
             $table->foreign('tar_id')->references('tar_id')->on('tarifs')->onDelete('cascade');
