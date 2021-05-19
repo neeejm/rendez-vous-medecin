@@ -21,6 +21,8 @@
                         </div>
                     @endif
 
+                        <img src="{{ asset('storage/public/images/fdoctor.png') }}" alt="">
+
                     {{-- {{ __('You are logged in!') }} --}}
 
                     <form  method="POST" action="{{ route('home_search') }}"> 

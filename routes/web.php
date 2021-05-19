@@ -42,9 +42,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::middleware(['doctor'])->group(function () {
         Route::get('/profile/calendar', [App\Http\Controllers\User\CalendarController::class, 'index'])->name('profile.calendar');
         Route::post('/profile/calendar', [App\Http\Controllers\User\CalendarController::class, 'add']);
-        Route::get('/profile/rv_request', [App\Http\Controllers\User\AcceptController::class, 'index'])->name('profile.rv');
+        Route::get('/profile/rv_request', [App\Http\Controllers\User\AcceptController::class, 'index'])->name('profile.rvr');
         Route::get('/profile/rv_request/accept/{id}', [App\Http\Controllers\User\AcceptController::class, 'accept'])->where('id', '^[1-9]+$')->name('profile.accept');
         Route::get('/profile/rv_request/reject/{id}', [App\Http\Controllers\User\AcceptController::class, 'reject'])->where('id', '^[1-9]+$')->name('profile.reject');
+        Route::get('/profile/rv', [App\Http\Controllers\User\ConcludeController::class, 'index'])->name('profile.rv');
+        Route::get('/profile/rv/conclude/{id}', [App\Http\Controllers\User\ConcludeController::class, 'redirectTo'])->where('id', '^[1-9]+$')->name('profile.redirectTo');
+        Route::post('/profile/rv/conclude/{id}', [App\Http\Controllers\User\ConcludeController::class, 'conclude'])->where('id', '^[1-9]+$')->name('profile.conclude');
         // Route::get('/profile/calendar/edit/{id},{date},{time},{st}', [App\Http\Controllers\User\CalendarController::class, 'edit'])->where([
         //     'id' => '',
         //     'date' => '',

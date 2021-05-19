@@ -7,7 +7,8 @@ return [
     'client' => 2,
     'on_hold' => 0,
     'approved' => 1,
-    'done' => 2,
-    'passed' => 3,
+    'passed' => 2,
+    'done' => 3,
     'denied' => 4,
+
 ];

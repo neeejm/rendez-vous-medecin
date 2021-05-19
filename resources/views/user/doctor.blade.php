@@ -6,7 +6,9 @@
     <br>
     <a href="{{ route('profile.tarif') }}">editer tarif</a>
     <br>
-    <a href="{{ route('profile.rv') }}">demande de rendez-vous</a>
+    <a href="{{ route('profile.rvr') }}">demande de rendez-vous</a>
+    <br>
+    <a href="{{ route('profile.rv') }}">conclure rendez-vous</a>
 
 @else
     {{ __('Not yet approved, doc!') }}
