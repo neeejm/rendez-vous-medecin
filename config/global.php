@@ -10,5 +10,5 @@ return [
     'passed' => 2,
     'done' => 3,
     'denied' => 4,
-
+    'canceled' => 5,
 ];

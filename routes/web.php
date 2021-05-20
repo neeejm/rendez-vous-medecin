@@ -30,6 +30,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/rendezvous/{id}', [App\Http\Controllers\User\RendezVousController::class, 'index'])->where('id', '^[1-9]+$')->name('rv');
         Route::post('/rendezvous/{id}', [App\Http\Controllers\User\RendezVousController::class, 'take'])->where('id', '^[1-9]+$')->name('rv');
         Route::get('/profile/history', [App\Http\Controllers\User\HistoryController::class, 'history'])->name('profile.history');
+        Route::get('/profile/crv', [App\Http\Controllers\User\CancelController::class, 'index'])->name('profile.crv');
+        Route::get('/profile/crv/cancel/{id}', [App\Http\Controllers\User\CancelController::class, 'cancel'])->where('id', '^[1-9]+$')->name('profile.cancel');
     });
 
     Route::get('/profile', [App\Http\Controllers\User\ProfileController::class, 'index'])->name('profile');

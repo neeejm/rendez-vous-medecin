@@ -93,9 +93,6 @@ class ConcludeController extends Controller
         return redirect()->route('profile.rv', [
             'status' => $this->status,
         ]);
-        // return back()->with([
-        //     'status' => $this->status,
-        // ]);
     }
 
     //
@@ -103,7 +100,7 @@ class ConcludeController extends Controller
     {
         $doc_id = Doctor::where('user_id', Auth::user()->user_id)->first()->doc_id;
 
-        return view('/user/rv_conclude', [
+        return view('/user/rvs', [
             'rvs' => RendezVous::all()->where('doc_id', $doc_id),
         ]);
         // $data = Doctor::where('doc_id', $id)->first();
