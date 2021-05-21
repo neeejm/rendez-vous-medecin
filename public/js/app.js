@@ -34495,6 +34495,45 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 
 /***/ }),
 
+/***/ "./resources/css/fontawesome/css/fontawesome.min.css":
+/*!***********************************************************!*\
+  !*** ./resources/css/fontawesome/css/fontawesome.min.css ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/css/style.css":
+/*!*********************************!*\
+  !*** ./resources/css/style.css ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/css/slide.css":
+/*!*********************************!*\
+  !*** ./resources/css/slide.css ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -34512,6 +34551,32 @@ __webpack_require__.r(__webpack_exports__);
 /*!*****************************************************************************!*\
   !*** ./vendor/snapappointments/bootstrap-select/sass/bootstrap-select.scss ***!
   \*****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/css/bootstrap-datetimepicker.min.css":
+/*!********************************************************!*\
+  !*** ./resources/css/bootstrap-datetimepicker.min.css ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/css/fontawesome/css/all.min.css":
+/*!***************************************************!*\
+  !*** ./resources/css/fontawesome/css/all.min.css ***!
+  \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -49697,7 +49762,12 @@ Vue.compile = compileToFunctions;
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0,
 /******/ 			"css/app": 0,
-/******/ 			"css/bootstrap-select": 0
+/******/ 			"css/style": 0,
+/******/ 			"css/all.min": 0,
+/******/ 			"css/bootstrap-datetimepicker.min": 0,
+/******/ 			"css/bootstrap-select": 0,
+/******/ 			"css/slide": 0,
+/******/ 			"css/fontawesome.min": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -49745,9 +49815,14 @@ Vue.compile = compileToFunctions;
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/bootstrap-select"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/bootstrap-select"], () => (__webpack_require__("./resources/sass/app.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app","css/bootstrap-select"], () => (__webpack_require__("./vendor/snapappointments/bootstrap-select/sass/bootstrap-select.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/style","css/all.min","css/bootstrap-datetimepicker.min","css/bootstrap-select","css/slide","css/fontawesome.min"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/style","css/all.min","css/bootstrap-datetimepicker.min","css/bootstrap-select","css/slide","css/fontawesome.min"], () => (__webpack_require__("./resources/sass/app.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/style","css/all.min","css/bootstrap-datetimepicker.min","css/bootstrap-select","css/slide","css/fontawesome.min"], () => (__webpack_require__("./vendor/snapappointments/bootstrap-select/sass/bootstrap-select.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/style","css/all.min","css/bootstrap-datetimepicker.min","css/bootstrap-select","css/slide","css/fontawesome.min"], () => (__webpack_require__("./resources/css/bootstrap-datetimepicker.min.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/style","css/all.min","css/bootstrap-datetimepicker.min","css/bootstrap-select","css/slide","css/fontawesome.min"], () => (__webpack_require__("./resources/css/fontawesome/css/all.min.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/style","css/all.min","css/bootstrap-datetimepicker.min","css/bootstrap-select","css/slide","css/fontawesome.min"], () => (__webpack_require__("./resources/css/fontawesome/css/fontawesome.min.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/style","css/all.min","css/bootstrap-datetimepicker.min","css/bootstrap-select","css/slide","css/fontawesome.min"], () => (__webpack_require__("./resources/css/style.css")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app","css/style","css/all.min","css/bootstrap-datetimepicker.min","css/bootstrap-select","css/slide","css/fontawesome.min"], () => (__webpack_require__("./resources/css/slide.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

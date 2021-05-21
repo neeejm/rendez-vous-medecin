@@ -1,6 +1,15 @@
 {
     "/js/app.js": "/js/app.js",
     "/js/bootstrap-select.js": "/js/bootstrap-select.js",
+    "/js/bootstrap-datetimepicker.min.js": "/js/bootstrap-datetimepicker.min.js",
+    "/js/datepicker.js": "/js/datepicker.js",
+    "/js/theme.js": "/js/theme.js",
+    "/js/slide.js": "/js/slide.js",
     "/css/app.css": "/css/app.css",
-    "/css/bootstrap-select.css": "/css/bootstrap-select.css"
+    "/css/style.css": "/css/style.css",
+    "/css/all.min.css": "/css/all.min.css",
+    "/css/bootstrap-datetimepicker.min.css": "/css/bootstrap-datetimepicker.min.css",
+    "/css/bootstrap-select.css": "/css/bootstrap-select.css",
+    "/css/slide.css": "/css/slide.css",
+    "/css/fontawesome.min.css": "/css/fontawesome.min.css"
 }
