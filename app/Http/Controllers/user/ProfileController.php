@@ -19,6 +19,10 @@ class ProfileController extends Controller
     //
     public function index()
     {
-        return view('/user/profile');
+        $user = Auth::user();
+
+        return view('/user/profile', [
+            'client' => Client::where('user_id', $user->user_id)->first(),
+        ]);
     }
 }

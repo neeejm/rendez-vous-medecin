@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\RendezVous;
 use App\Models\Doctor;
 use App\Models\Client;
+use App\Models\Calendar;
+use App\Models\DetailFile;
+use App\Models\DetailImage;
+use App\Models\Tarif;
 use Auth;
 
 class HistoryController extends Controller
@@ -29,6 +33,10 @@ class HistoryController extends Controller
         return view('user/history', [
             'rvs' => $rvs,
             'docs' => $docs,
+            'dts' => Calendar::all(),
+            'tars' => Tarif::all(),
+            'files' => DetailFile::all(),
+            'imgs' => DetailImage::all(),
         ]);
     }
 }

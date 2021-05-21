@@ -77,14 +77,16 @@ class HomeController extends Controller
             'sps' => Specialtie::all(),
             'cs' => City::all(),
             'docs' => $docs,
+            'adr' => Address::all(),
         ]);
     }
 
     public function findAll(Request $request)
     {
-       return view('home', [
+        return view('home', [
             'sps' => Specialtie::all(),
             'cs' => City::all(),
+            'adr' => Address::all(),
             'docs' => Doctor::all(),
         ]);
     }
@@ -102,10 +104,11 @@ class HomeController extends Controller
                     // dump($adr->adr_id);
             }
         }
-       return view('home', [
+        return view('home', [
             'sps' => Specialtie::all(),
             'cs' => City::all(),
             'docs' => $docs,
+            'adr' => Address::all(),
         ]);
     }
 

@@ -7,9 +7,8 @@
     "/js/slide.js": "/js/slide.js",
     "/css/app.css": "/css/app.css",
     "/css/style.css": "/css/style.css",
-    "/css/all.min.css": "/css/all.min.css",
+    "/css/fontawesome.min.css": "/css/fontawesome.min.css",
     "/css/bootstrap-datetimepicker.min.css": "/css/bootstrap-datetimepicker.min.css",
     "/css/bootstrap-select.css": "/css/bootstrap-select.css",
-    "/css/slide.css": "/css/slide.css",
-    "/css/fontawesome.min.css": "/css/fontawesome.min.css"
+    "/css/slide.css": "/css/slide.css"
 }

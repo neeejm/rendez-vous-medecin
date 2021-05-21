@@ -66,3 +66,6 @@ Route::middleware('web')->group(function () {
     Route::post('/apply', [App\Http\Controllers\User\ApplyController::class, 'register']);
 
 });
+    Route::get('/images', function () {
+        return view('user/image');
+    })->name('image');

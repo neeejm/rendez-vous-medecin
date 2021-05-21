@@ -9,6 +9,10 @@ use App\Models\Client;
 use App\Models\Calendar;
 use App\Models\Tarif;
 use App\Models\RendezVous;
+use App\Models\Address;
+use App\Models\City;
+use App\Models\SpecialiseIn;
+use App\Models\Specialtie;
 use Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -33,7 +37,7 @@ class RendezVousController extends Controller
                 'client_id' => Client::where('user_id', Auth::user()->user_id)->first()->client_id,
                 'dt_id' => $request->cal,
                 'reasons' => $request->reason,
-                'state' =>  config('global.on_hold'), 
+                'state' => config('global.on_hold'), 
             ]);
         }
         catch(Throwable $e)
@@ -50,20 +54,29 @@ class RendezVousController extends Controller
 
     public function index($id)
     {
-        $data = Doctor::where('doc_id', $id)->first();
-        $doc_name = $data->fname . ' ' . $data->lname;
-        // dd($doc_name);
+        $doc = Doctor::where('doc_id', $id)->first();
+        $city = City::where('ci_id', Address::where('doc_id', $id)->first()->ci_id)->first()->city;
+        // dd($city);
+        $sps =[];
 
-        $data = Client::where('user_id', Auth::user()->user_id)->first();
-        $client_name = $data->fname . ' ' . $data->lname;
-        // dd($client_name);
-
+        // dd(SpecialiseIn::where('doc_id', 62)->get());
+        foreach (SpecialiseIn::where('doc_id', $doc->doc_id)->get() as $sp)
+        {
+            foreach (Specialtie::where('sp_id', $sp->sp_id)->get() as $spv)
+            {
+                $sps[] = $spv;
+            }
+        } 
+        // dd($sps);
         return view('user/rendezvous', [
             'id' => $id,
-            'doc_name' => $doc_name,
-            'client_name' => $client_name,
+            'doc' => $doc,
+            'city' => $city,
+            'client' => Client::where('user_id', Auth::user()->user_id)->first(),
             'cals' => Calendar::where('doc_id', $id)->get(),
             'tars' => Tarif::where('doc_id', $id)->get(),
+            'sps'=> $sps,
+            'adr'=> Address::where('doc_id', $id)->first(),
         ]);
     }
 }

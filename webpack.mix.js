@@ -21,8 +21,7 @@ mix
 
     // .postCss('resources/css/app.css', 'public/css')
     .postCss('resources/css/bootstrap-datetimepicker.min.css', 'public/css')
-    .postCss('resources/css/fontawesome/css/all.min.css', 'public/css')
-    .postCss('resources/css/fontawesome/css/fontawesome.min.css', 'public/css')
+    .postCss('node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css', 'public/css')
     .postCss('resources/css/style.css', 'public/css')
     .postCss('resources/css/slide.css', 'public/css')
 
