@@ -162,18 +162,19 @@
         <div class="row justify-content-center">
 
             <div class="col-lg-5 col-md-7">
-                <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                <form action="{{ route('contact') }}" method="POST">
+                    @csrf
                     <div class="form-group">
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Votre Nom" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Votre Nom" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required/>
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Votre Email" data-rule="email" data-msg="Please enter a valid email" />
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Votre Email" data-rule="email" data-msg="Please enter a valid email" required/>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Sujet" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Sujet" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" required/>
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Vous pouvez écrivez quelque chose pour nous"></textarea>
+                        <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Vous pouvez écrivez quelque chose pour nous" required></textarea>
                     </div>
                     <div class="text-center">
                         <button class="btn btn-primary" type="submit">envoyer message</button>

@@ -13,4 +13,6 @@ return [
     'done' => 3,
     'denied' => 4,
     'canceled' => 5,
+
+    'email' => 'testing.pfa@gmail.com',
 ];

@@ -47,13 +47,13 @@ class CalendarController extends Controller
                 DB::rollback();
             }
             DB::commit();
-            $this->status = 'yis';
+            $this->status = 'Horaire ajouté';
         }
         else
-            $this->status = 'bitch';
+            $this->status = 'Erreur';
 
         return redirect()->route('profile.calendar', [
-            'status' => $this->status,
+            'msg' => $this->status,
         ]);
     }
 
@@ -74,7 +74,7 @@ class CalendarController extends Controller
         $this->status = 'supprimé';
 
         return redirect()->route('profile.calendar', [
-            'status' => $this->status,
+            'msg' => $this->status,
         ]);
     }
 

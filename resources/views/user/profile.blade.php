@@ -2,6 +2,11 @@
 
 @section('content')
 
+        @isset($_GET['msg']) 
+            <div class="alert alert-success" role="alert">
+                {{ $_GET['msg'] }}
+            </div>
+        @endisset
     <div class="main-content">
         <div class="page-header">
             <div class="container">
@@ -14,11 +19,6 @@
                 </div>
             </div>
         </div>
-        {{-- @isset($_GET['status']) 
-            <div class="alert alert-success" role="alert">
-                {{ $_GET['status'] }}
-            </div>
-        @endisset --}}
 
         {{-- {{ Auth::user()->user_type }} --}}
         @if ( Auth::user()->user_type == config('global.admin') ) 

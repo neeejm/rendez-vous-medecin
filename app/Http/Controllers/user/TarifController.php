@@ -36,10 +36,10 @@ class TarifController extends Controller
             DB::rollback();
         }
         DB::commit();
-        $this->status = 'yis';
+        $this->status = 'Tarif ajouté';
 
         return redirect()->route('profile.tarif', [
-            'status' => $this->status,
+            'msg' => $this->status,
         ]);
     }
 
@@ -60,7 +60,7 @@ class TarifController extends Controller
         $this->status = 'supprimé';
 
         return redirect()->route('profile.tarif', [
-            'status' => $this->status,
+            'msg' => $this->status,
         ]);
     }
 

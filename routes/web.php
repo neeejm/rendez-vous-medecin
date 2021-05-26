@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('web')->group(function () {
 
     Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');
+    Route::post('/', [App\Http\Controllers\User\ContactController::class, 'index'])->name('contact');
 
     Auth::routes(['verify' => true]);
 
@@ -68,6 +69,7 @@ Route::middleware('web')->group(function () {
     Route::get('/apply', [App\Http\Controllers\User\ApplyController::class, 'index'])->name('apply');
     Route::post('/apply', [App\Http\Controllers\User\ApplyController::class, 'register']);
 
+
     Route::get('/imgs/{path}', function ($path) {
         // dd($path);
         return view('user/image', [
@@ -78,5 +80,6 @@ Route::middleware('web')->group(function () {
     Route::get('/test', function () {
         return view('test');
     })->name('test');
+
 
 });

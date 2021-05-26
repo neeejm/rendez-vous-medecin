@@ -50,9 +50,9 @@ class RendezVousController extends Controller
         }
         DB::commit();
 
-        $this->status = "rv taken"; 
+        $msg = 'rendez-vous pris'; 
         return redirect()->route('profile', [
-           'status' => $this->status, 
+           'msg' => $msg, 
         ]);
     }
 

@@ -105,14 +105,14 @@
                     </div>
                 </div>
             </div>
-            <button class="btn btn-outline-primary" id="up-btn"><i class="fas fa-chevron-up">up</i></button>
+            <button class="btn btn-outline-primary" id="up-btn"><i class="fas fa-caret-up"></i></button>
         </header>
 		<!-- Header /-->
 		
         <!-- Mobile Header -->
         <header class="mobile-header">
             <div class="panel-control-left">
-				<a class="toggle-menu" href="#side_menu"><i class="fas fa-align-left">H</i></a>
+				<a class="toggle-menu" href="#side_menu"><i class="fab fa-buffer"></i></a>
             </div>
             <div class="page_title">
 				<a href="{{ route('welcome') }}"><img src="{{ asset('storage/images/logo.png') }}" alt="Logo" class="img-fluid" width="60" height="60"></a>
@@ -188,6 +188,12 @@
 		<!-- Mobile Sidebar /-->
 		
 		 <!-- Content -->
+        @if(\Session::has('msg'))
+            <div class="alert alert-primary" role="alert">
+                {{ \Session::get('msg') }}
+            </div>
+        @endisset
+
         @yield('content')
  		<!-- Content /-->
 		 
