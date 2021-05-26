@@ -27,6 +27,7 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.3",
         "@popperjs/core": "^2.9.2",
+        "fullcalendar": "^5.7.0",
         "moment": "^2.29.1",
         "owl.carousel": "^2.3.4",
         "select2": "*",

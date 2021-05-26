@@ -5,6 +5,8 @@
  */
 
 require('./bootstrap');
+// require('fullcalendar/main');
+require('@fortawesome/fontawesome-free/js/all');
 
 window.Vue = require('vue').default;
 

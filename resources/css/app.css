@@ -1,0 +1,38 @@
+@media (max-width: 575px) {
+    .display-4 {
+        font-size: 1.5rem;
+    }
+    .day h5 {
+        background-color: #f8f9fa;
+        padding: 3px 5px 5px;
+        margin: -8px -8px 8px -8px;
+    }
+    .date {
+        padding-left: 4px;
+    }
+}
+
+@media (min-width: 576px) {
+    .day {
+        height: 14.2857vw;
+    }
+}
+
+.btn-circle.btn-custom {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    font-size: 24px;
+    line-height: 1.33;
+}
+
+.btn-circle {
+    width: 35px;
+    height: 35px;
+    padding: 8px 0px;
+    border-radius: 18px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}

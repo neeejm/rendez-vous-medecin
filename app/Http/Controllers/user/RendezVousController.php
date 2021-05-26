@@ -39,6 +39,10 @@ class RendezVousController extends Controller
                 'reasons' => $request->reason,
                 'state' => config('global.on_hold'), 
             ]);
+
+            Calendar::where('dt_id', $request->cal)->update([
+                'is_free' => false,
+            ]);
         }
         catch(Throwable $e)
         {

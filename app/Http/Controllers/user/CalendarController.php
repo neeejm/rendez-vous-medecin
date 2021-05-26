@@ -57,36 +57,21 @@ class CalendarController extends Controller
         ]);
     }
 
-    public function edit(Request $request, $id, $date, $time, $st)
+    public function cancel($id)
     {
-        $cals = Calendar::all();
-        $dt = $date . ' ' . $time;
+        // dd('canel');
+        DB::beginTransaction();
 
-        $exist = false;
-        foreach($cals as $cal)
-            $exist = ($cal->date_time == $dt) ? true : false;
-        // dd($exist);
-                    
-        if (!$exist)
+        try
         {
-            DB::beginTransaction();
-
-            try
-            {
-                Calendar::where('doc_id', $id)->udpate([
-                    'date_time' => $dt,
-                    'is_free' => $st,
-                ]);
-            }
-            catch(Throwable $e)
-            {
-                DB::rollback();
-            }
-            DB::commit();
-            $this->status = 'yis';
+            Calendar::where('dt_id', $id)->delete();
         }
-        else
-            $this->status = 'bitch';
+        catch(Throwable $e)
+        {
+            DB::rollback();
+        }
+        DB::commit();
+        $this->status = 'supprimé';
 
         return redirect()->route('profile.calendar', [
             'status' => $this->status,
@@ -96,9 +81,24 @@ class CalendarController extends Controller
     public function index()
     {
         $this->doc_id = Doctor::where('user_id', Auth::user()->user_id)->first()->doc_id;
+        $cals = Calendar::all()->where('doc_id', $this->doc_id);
+
+        $calendars = [];
+        foreach ($cals as $cal)
+        {
+            $date = explode(' ', $cal->date_time)[0];
+            $time = [];
+            foreach ($cals as $cal2)
+            {
+                if ($date == explode(' ', $cal2->date_time)[0]) 
+                    $time[$cal2->dt_id] = explode(' ', $cal2->date_time)[1];
+            }
+            $calendars[$date] = $time;
+        }
+        // dd($calendars);
 
         return view('user/calendar', [
-            'cals' => Calendar::all()->where('doc_id', $this->doc_id),
+            'cals' => $calendars,
         ]);
     }
 }

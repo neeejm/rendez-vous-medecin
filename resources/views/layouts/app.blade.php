@@ -21,8 +21,9 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
         <link href="{{ asset('css/slide.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/calendar.css') }}" rel="stylesheet">
         <link href="{{ asset('css/bootstrap-select.css') }}" rel="stylesheet">
-		
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.0/main.min.css">
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
 		<script src="assets/js/html5shiv.min.js"></script>
@@ -50,13 +51,13 @@
 											<a href="{{ route("home") }}" class="nav-link">Home</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" id="about-btn">About Us</a>
+											<a href="/#about" class="nav-link" id="about-btn">About Us</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" id="services-btn">Services</a>
+											<a href="/#services" class="nav-link" id="services-btn">Services</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" id="contact-btn">Contact Us</a>
+											<a href="/#contact" class="nav-link" id="contact-btn">Contact Us</a>
 										</li>
                                         @guest
                                             @if (Route::has('apply'))
@@ -197,7 +198,7 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-4">
                             <div class="footer-widget">
-                                 <h4 class="footer-title">Location</h4>
+                                 <h4 class="footer-title">Organisation</h4>
                                 <div class="about-clinic">
                                     <p><strong>Info:</strong>
                                         <div>
@@ -279,7 +280,9 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="{{ asset('js/theme.js') }}" defer></script>
         <script src="{{ asset('js/slide.js') }}" defer></script>
+        <script src="{{ asset('js/calendar.js') }}" defer></script>
         <script src="{{ asset('js/bootstrap-select.js') }}" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.0/main.min.js"></script>
 				
     </body>
 

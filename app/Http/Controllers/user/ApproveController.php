@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\Doctor;
 use App\Models\Address;
 use App\Models\SpecialiseIn;
+use App\Models\Specialtie;
+use App\Models\City;
 use Illuminate\Support\Facades\DB;
 
 class ApproveController extends Controller
@@ -68,8 +70,24 @@ class ApproveController extends Controller
     //
     public function index()
     {
+        $sps =[];
+
+        // dd(SpecialiseIn::where('doc_id', 62)->get());
+        foreach (SpecialiseIn::all() as $sp)
+        {
+            foreach (Specialtie::where('sp_id', $sp->sp_id)->get('name') as $spv)
+            {
+                $sps[] = $sp->doc_id . ',' . $spv->name;
+            }
+        } 
+
+        // dd($sps);
+
         return view('/user/approve', [
             'docs' => Doctor::all(),
+            'cs' => City::all(),
+            'adr' => Address::all(),
+            'sps' => $sps,
         ]);
     }
 }

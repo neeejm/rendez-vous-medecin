@@ -23,6 +23,7 @@ class ProfileController extends Controller
 
         return view('/user/profile', [
             'client' => Client::where('user_id', $user->user_id)->first(),
+            'doc' => Doctor::where('user_id', $user->user_id)->first(),
         ]);
     }
 }

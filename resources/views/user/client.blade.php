@@ -13,9 +13,6 @@
                                     <li>
                                         <a href="{{ route('profile.history') }}">Historique</a>
                                     </li>
-                                    <li>
-                                        <a href="{{ route('profile.crv') }}">liste des rendez-vous</a>
-                                    </li>
                                 </ul>
                             </div>
                         </div>

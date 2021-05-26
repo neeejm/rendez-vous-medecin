@@ -5,10 +5,11 @@
     "/js/datepicker.js": "/js/datepicker.js",
     "/js/theme.js": "/js/theme.js",
     "/js/slide.js": "/js/slide.js",
+    "/js/calendar.js": "/js/calendar.js",
     "/css/app.css": "/css/app.css",
     "/css/style.css": "/css/style.css",
-    "/css/fontawesome.min.css": "/css/fontawesome.min.css",
     "/css/bootstrap-datetimepicker.min.css": "/css/bootstrap-datetimepicker.min.css",
     "/css/bootstrap-select.css": "/css/bootstrap-select.css",
+    "/css/calendar.css": "/css/calendar.css",
     "/css/slide.css": "/css/slide.css"
 }

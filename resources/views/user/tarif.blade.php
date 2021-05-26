@@ -1,54 +1,57 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card mt-4">
-                <div class="card-header">{{ __('Ajouter au Tarif') }}</div>
 
-                <div class="card-body">
-                    @isset($_GET['status'])
-                        <div class="alert alert-success" role="alert">
-                            {{ $_GET['status'] }}
-                        </div>
-                    @endisset
-
-                    <div class="container">
-                        <div class="text-center">
-                            <form method="POST" action="{{ route('profile.tarif') }}">
-                                @csrf
-                                    <label for="title">Titre</label>
-                                    <input id="title" type="text" name="title" required>
-
-                                    <label for="price">Price</label>
-                                    <input id="price" type="number" name="price" min="0" required>
-
-                                    <button type="submit" class="btn btn-primary">
-                                        +
-                                    </button>
-                            </form>
-                        </div>
+<div class="main-content">
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title">
+                        <span>Page de Tarifs:</span>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
+    <div class="container mt-4">
+        <div class="text-center">
+            <form method="POST" action="{{ route('profile.tarif') }}">
+                @csrf
+                    <label for="title">Titre</label>
+                    <input id="title" type="text" name="title" required>
 
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card mt-4">
-                <div class="card-header">{{ __('Tarifs') }}</div>
+                    <label for="price">Price</label>
+                    <input id="price" type="number" name="price" min="0" max="10000" required>
 
-                <div class="card-body">
-                    <ul class="list-group">
-                        @foreach ($tars as $tar)
-                            <li class="list-group-item">                    
-                                {{ $tar }} 
-                            </li>
-                        @endforeach
-                    </ul>
+                    <button type="submit" class="btn btn-sm btn-primary">
+                        +
+                    </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="main-content account-content">
+    <div class="content">
+        <div class="container">
+            <div class="account-box">
+                <div class="appointment">
+                    <div class="tab-content">
+                        <div class="form-group">
+                            <label class="m-b-20">Liste des tarifs:</label>
+                            <ul class="appoint-time">
+                                @foreach ($tars as $tar)
+                                    <li>                    
+                                        {{ $tar->title . ': ' . $tar->price }} 
+                                        <button type="button" class="btn btn-sm btn-outline-dark">
+                                            <a href="{{ action([App\Http\Controllers\User\TarifController::class, 'cancel'], ['id' => $tar->tar_id,]) }}"> - </a>
+                                        </button></small>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

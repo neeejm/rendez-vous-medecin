@@ -16,11 +16,12 @@ use Illuminate\Support\Facades\DB;
 
 class ConcludeController extends Controller
 {
-    private static $n = 0;
+    private $week;
     //
     public function __construct()
     {
         $this->middleware(['auth', 'doctor',]);
+        $this->week = date('W');
     }
 
     public function redirectTo($id)
@@ -58,29 +59,39 @@ class ConcludeController extends Controller
             // dd(substr($request->file('img')->store('public/images/detail'), strlen('public/')));
             try
             {
-            RendezVous::where('rv_id', $id)
-                            ->update([
-                                'state' => config('global.done'),
-                                'doc_detail' => $request->detail,                     
-                            ]); 
+                RendezVous::where('rv_id', $id)
+                                ->update([
+                                    'state' => config('global.done'),
+                                    'doc_detail' => $request->detail,                     
+                                ]); 
 
                 if(!is_null($request->img))
+                foreach ($request->file('img') as $index => $item)
                 {
-                    self::$n++;
-                    DetailImage::create([
-                        'rv_id' => $id,
-                        'img' => substr($request->file('img')->store('public/images/detail'), strlen('public/')),
-                    ]);
+                    // if(!is_null($img))
+                    // {
+                        DetailImage::create([
+                            'rv_id' => $id,
+                            'img' => substr($request->img[$index]->store('public/images/detail'), strlen('public/')),
+                        ]);
+                    // }
                 }
 
                 if(!is_null($request->file))
+                foreach($request->file('file') as $index => $item)
                 {
-                    self::$n++;
-                    DetailFile::create([
-                        'rv_id' => $id,
-                        'file' => substr($request->file('file')->store('public/files/detail'), strlen('public/')),
-                    ]);
+                    // if(!is_null($file))
+                    // {
+                        DetailFile::create([
+                            'rv_id' => $id,
+                            'file' => substr($request->file[$index]->store('public/files/detail'), strlen('public/')),
+                        ]);
+                    // }
                 }
+
+                Calendar::where('dt_id', RendezVous::where('rv_id', $id)->first()->dt_id)->update([
+                    'is_free' => true,
+                ]);
             }
             catch(Throwable $e)
             {
@@ -95,28 +106,52 @@ class ConcludeController extends Controller
         ]);
     }
 
+    public function next($week)
+    {
+        $this->week = $week;
+        $this->week += 4;
+
+        return $this->index();
+        // return view("test");
+    }
+
+    public function previous($week)
+    {
+        $this->week = $week;
+        $this->week -= 4;
+
+        return $this->index();
+    }
     //
     public function index()
     {
         $doc_id = Doctor::where('user_id', Auth::user()->user_id)->first()->doc_id;
 
+        $rvs = RendezVous::all()->where('doc_id', $doc_id);
+        $cals = Calendar::all()->where('doc_id', $doc_id);
+
+        $calendar = [];
+        foreach ($cals as $cal)
+        {
+            $info = [];
+            $is_in = false;
+            foreach ($rvs as $rv)
+            {
+                if ($rv->dt_id == $cal->dt_id)
+                {
+                    $info[$rv->rv_id] = substr(explode(' ', $cal->date_time)[1], 0, -3) . ',' . $rv->state;
+                    $is_in = true;
+                }
+            }
+            if ($is_in)
+                $calendar[explode(' ', $cal->date_time)[0]] = $info;
+        } 
+        // dump("end");
+        // dd($calendar);
+
         return view('/user/rvs', [
-            'rvs' => RendezVous::all()->where('doc_id', $doc_id),
+            'rvs' => $calendar,
+            'week' => $this->week,
         ]);
-        // $data = Doctor::where('doc_id', $id)->first();
-        // $doc_name = $data->fname . ' ' . $data->lname;
-        // // dd($doc_name);
-
-        // $data = Client::where('user_id', Auth::user()->user_id)->first();
-        // $client_name = $data->fname . ' ' . $data->lname;
-        // // dd($client_name);
-
-        // return view('user/rendezvous', [
-        //     'id' => $id,
-        //     'doc_name' => $doc_name,
-        //     'client_name' => $client_name,
-        //     'cals' => Calendar::where('doc_id', $id)->get(),
-        //     'tars' => Tarif::where('doc_id', $id)->get(),
-        // ]);
     }
 }

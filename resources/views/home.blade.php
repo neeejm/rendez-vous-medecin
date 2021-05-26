@@ -98,10 +98,12 @@
                                                 <h6 style="display: inline">Numero de fax:</h6> <p style="display: inline">{{ $doc->fax_num }}</p> <br>
                                                 <h6 style="display: inline">Sexe:</h6> <p style="display: inline">{{ ($doc->gender == 0) ? 'femme' : 'homme' }}</p> <br>
                                                 <h6 style="display: inline">Specialités:</h6> <p style="display: inline">
-                                                    {{-- @foreach ($collection as $item)
-                                                        
-                                                    @endforeach --}}
-                                                    {{-- {{ $doc->sp_id }} --}}
+                                                    <br>
+                                                    @foreach ($doc_sps as $sp)
+                                                        @if (explode(',', $sp)[0] == $doc->doc_id)
+                                                            {{ explode(',', $sp)[1] }}  <br> 
+                                                        @endif
+                                                    @endforeach
                                                 </p> <br>
                                         </div>
                                     </div>
@@ -112,11 +114,13 @@
                                                 <span class="depart">{{ $cs->where('ci_id', $adr->where('doc_id', $doc->doc_id)->first()->ci_id)->first()->city }}</span>
                                             </p>
                                         </div>
-                                        <div class="view-profie"> 
-                                            <a href="{{ action([App\Http\Controllers\User\RendezVousController::class, 'index'], ['id' => $doc->doc_id,]) }}">
-                                                Prendre rendez-vous
-                                            </a>
-                                        </div>
+                                        @if (Auth::user()->user_type == config('global.client')) 
+                                            <div class="view-profie"> 
+                                                <a href="{{ action([App\Http\Controllers\User\RendezVousController::class, 'index'], ['id' => $doc->doc_id,]) }}">
+                                                    Prendre rendez-vous
+                                                </a>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

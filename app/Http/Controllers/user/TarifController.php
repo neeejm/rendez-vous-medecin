@@ -43,6 +43,27 @@ class TarifController extends Controller
         ]);
     }
 
+    public function cancel($id)
+    {
+        // dd('canel');
+        DB::beginTransaction();
+
+        try
+        {
+            Tarif::where('tar_id', $id)->delete();
+        }
+        catch(Throwable $e)
+        {
+            DB::rollback();
+        }
+        DB::commit();
+        $this->status = 'supprimé';
+
+        return redirect()->route('profile.tarif', [
+            'status' => $this->status,
+        ]);
+    }
+
     public function index()
     {
         $doc_id = Doctor::where('user_id', Auth::user()->user_id)->first()->doc_id;

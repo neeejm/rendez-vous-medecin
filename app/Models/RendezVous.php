@@ -34,7 +34,7 @@ class RendezVous extends Model
     }
 
     /**
-     * Get all of the detailFile for the RendezVous
+     * Get all of the 'local_key'e detailFile for the RendezVous
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

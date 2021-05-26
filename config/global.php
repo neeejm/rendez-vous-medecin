@@ -5,6 +5,8 @@ return [
     'admin' => 0,
     'doctor' => 1,
     'client' => 2,
+
+    // rendez-vous states
     'on_hold' => 0,
     'approved' => 1,
     'passed' => 2,

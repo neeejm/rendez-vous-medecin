@@ -1,4 +1,7 @@
-@extends('layouts.app')
+{{-- gooooooooooooooooooooooooooooooone --}}
+
+
+{{-- @extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -33,11 +36,11 @@
                         <br>
                         <h3>Image supplumentaire</h3>
                         <label for="img">Ajouter image:</label>
-                        <input type="file" id="img" name="img" class="form-control"accept="image/*" >
+                        <input type="file" id="img" name="img[]" class="form-control"accept="image/*" multiple>
                         <br>
                         <h3>Fichier supplumentaire</h3>
                         <label for="file">Ajouter fichier:</label>
-                        <input type="file" id="file" name="file" class="form-control" accept=".doc, .docx, .txt, .pdf">
+                        <input type="file" id="file" name="file[]" class="form-control" accept=".doc, .docx, .txt, .pdf" multiple>
                         <br>
                             <button type="submit" class="btn btn-primary">
                                 {{ __('Conclude') }}
@@ -48,4 +51,4 @@
         </div>
     </div>
 </div>
-@endsection
+@endsection --}}

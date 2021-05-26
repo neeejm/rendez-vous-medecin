@@ -98,16 +98,18 @@
                                     <div class="form-check">
                                         @foreach ($cals as $cal)
                                             <ul>
-                                                <li>
-                                                    <input class="form-check-input" type="radio" name="cal" value="{{ $cal->dt_id }}" id="cal" required>
-                                                    <label class="form-check-label" for="cal">
-                                                            <span>{{ explode(' ', $cal->date_time)[0] }}</span> >>> <b>{{ explode(' ', $cal->date_time)[1] }}</b>
-                                                        {{-- <p>{{ $cal->date_time}}</p> --}}
-                                                        {{-- <p>{{ explode(' ', $cal->date_time)[0] }}</p> 
-                                                        <p>{{ explode(' ', $cal->date_time)[1] }}</p>  --}}
-                                                    </label>
-                                                    <br>
-                                                </li>
+                                                @if ($cal->is_free && explode(' ', $cal->date_time)[0] > date('Y-m-d'))
+                                                    <li>
+                                                        <input class="form-check-input" type="radio" name="cal" value="{{ $cal->dt_id }}" required>
+                                                        <label class="form-check-label">
+                                                                <span>{{ explode(' ', $cal->date_time)[0] }}</span> >>> <b>{{ explode(' ', $cal->date_time)[1] }}</b>
+                                                            {{-- <p>{{ $cal->date_time}}</p> --}}
+                                                            {{-- <p>{{ explode(' ', $cal->date_time)[0] }}</p> 
+                                                            <p>{{ explode(' ', $cal->date_time)[1] }}</p>  --}}
+                                                        </label>
+                                                        <br>
+                                                    </li>
+                                                @endif
                                             </ul>
                                         @endforeach
                                     </div>
@@ -123,8 +125,8 @@
                                         @foreach ($tars as $tar)
                                             <ul>
                                                 <li>
-                                                    <input class="form-check-input" type="radio" name="tar" value="{{ $tar->tar_id }}" id="tar" required>
-                                                    <label class="form-check-label" for="tar">
+                                                    <input class="form-check-input" type="radio" name="tar" value="{{ $tar->tar_id }}" required>
+                                                    <label class="form-check-label">
                                                         <p>{{ $tar->title}}: {{ $tar->price }}</p>
                                                     </label>
                                                     <br>
@@ -146,6 +148,19 @@
                                 </ul>
                             </div>
                         </div>
+                                        {{-- @if ($rv->state == config('global.on_hold'))
+                                                    {{ $rv->rv_id }}
+
+                                            <div>
+                                                <a href="{{ action([App\Http\Controllers\User\AcceptController::class, 'accept'], ['id' => $rv->rv_id,]) }}" class="btn btn-primary active" role="button" aria-pressed="true">
+                                                    Accept
+                                                </a>
+                                                <a href="{{ action([App\Http\Controllers\User\AcceptController::class, 'reject'], ['id' => $rv->rv_id,]) }}" class="btn btn-secondary active" role="button" aria-pressed="true">
+                                                    Reject
+                                                </a>
+                                            </div>
+                                            <br>
+                                        @endif --}}
 
                     </div>
                 </div>
