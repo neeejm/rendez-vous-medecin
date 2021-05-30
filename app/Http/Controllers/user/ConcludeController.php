@@ -34,6 +34,7 @@ class ConcludeController extends Controller
         $data = Client::where('client_id', $rv->client_id)->first();
         $client_name = $data->fname . ' ' . $data->lname;
 
+        // dump($id);
         return view('/user/conclude', [
             'id' => $id,
             'doc_name' => $doc_name,
@@ -131,21 +132,31 @@ class ConcludeController extends Controller
         $cals = Calendar::all()->where('doc_id', $doc_id);
 
         $calendar = [];
-        foreach ($cals as $cal)
+        foreach ($rvs as $rv)
         {
-            $info = [];
-            $is_in = false;
-            foreach ($rvs as $rv)
+            foreach ($cals as $cal)
             {
                 if ($rv->dt_id == $cal->dt_id)
                 {
-                    $info[$rv->rv_id] = substr(explode(' ', $cal->date_time)[1], 0, -3) . ',' . $rv->state;
-                    $is_in = true;
+                    $calendar[$rv->rv_id] = explode(' ', $cal->date_time)[0] . ',' . substr(explode(' ', $cal->date_time)[1], 0, -3) . ',' . $rv->state;
                 }
             }
-            if ($is_in)
-                $calendar[explode(' ', $cal->date_time)[0]] = $info;
-        } 
+        }
+        // foreach ($cals as $cal)
+        // {
+        //     $info = [];
+        //     $is_in = false;
+        //     foreach ($rvs as $rv)
+        //     {
+        //         if ($rv->dt_id == $cal->dt_id)
+        //         {
+        //             $info[$rv->rv_id] = substr(explode(' ', $cal->date_time)[1], 0, -3) . ',' . $rv->state;
+        //             $is_in = true;
+        //         }
+        //     }
+        //     if ($is_in)
+        //         $calendar[explode(' ', $cal->date_time)[0]] = $info;
+        // } 
         // dump("end");
         // dd($calendar);
 

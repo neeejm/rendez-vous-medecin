@@ -138,63 +138,62 @@
                                                 <span class="date col-1">{{ $dt->setISODate(date('Y'), $w + $j, $i)->format('d') }}</span>
                                                 <small class="d-sm-none text-center text-muted">{{ $dt->setISODate(date('Y'), $w + $j, $i)->format('D') }}</small>
                                                 <span class="col-1"></span>
-                                                @foreach ($rvs as $date => $info)
-                                                    @if ($dt->setISODate(date('Y'), $w + $j, $i)->format('Y-m-d') == $date)
-                                                        @foreach ($info as $id => $time)
-                                                            @if (explode(',', $time)[1] == config('global.approved'))
+                                                @foreach ($rvs as $id => $info)
+                                                
+                                                    @if ($dt->setISODate(date('Y'), $w + $j, $i)->format('Y-m-d') == explode(',', $info)[0])
+                                                            @if (explode(',', $info)[2] == config('global.approved'))
                                                                 {{-- <li class="bg-primary text-white list-group-item">                     --}}
                                                                 @php
                                                                     $state = "approuvée";
                                                                 @endphp
                                                                 <button type="button" class="m-1 btn btn-primary btn-circle">
-                                                                    <a href="{{ action([App\Http\Controllers\User\AcceptController::class, 'index'], ['id' => $id,]) }}"> {{ explode(',', $time)[0] }} </a>
+                                                                    <a href="{{ action([App\Http\Controllers\User\AcceptController::class, 'index'], ['id' => $id,]) }}"> {{ explode(',', $info)[1] }} </a>
                                                                 </button>
-                                                            @elseif (explode(',', $time)[1] == config('global.done'))
+                                                            @elseif (explode(',', $info)[2] == config('global.done'))
                                                                 {{-- <li class="bg-success text-white list-group-item">                     --}}
                                                                 @php
                                                                     $state = "conclu";
                                                                 @endphp
                                                                 <button type="button" class="m-1 btn btn-success btn-circle">
-                                                                    <a href="{{ action([App\Http\Controllers\User\AcceptController::class, 'index'], ['id' => $id,]) }}">  {{ explode(',', $time)[0] }}  </a>
+                                                                    <a href="{{ action([App\Http\Controllers\User\AcceptController::class, 'index'], ['id' => $id,]) }}">  {{ explode(',', $info)[1] }}  </a>
                                                                 </button>
-                                                            @elseif (explode(',', $time)[1] == config('global.denied'))
+                                                            @elseif (explode(',', $info)[2] == config('global.denied'))
                                                                 {{-- <li class="bg-danger text-white list-group-item">                     --}}
                                                                 @php
                                                                     $state = "refusé";
                                                                 @endphp
                                                                 <button type="button" class="m-1 btn btn-danger btn-circle">
-                                                                    <a href="{{ action([App\Http\Controllers\User\AcceptController::class, 'index'], ['id' => $id,]) }}">  {{ explode(',', $time)[0] }} </a>
+                                                                    <a href="{{ action([App\Http\Controllers\User\AcceptController::class, 'index'], ['id' => $id,]) }}">  {{ explode(',', $info)[1] }} </a>
                                                                 </button>
-                                                            @elseif (explode(',', $time)[1] == config('global.passed'))
+                                                            @elseif (explode(',', $info)[2] == config('global.passed'))
                                                                 {{-- <li class="bg-warning list-group-item">                     --}}
                                                                 @php
                                                                     $state = "passé";
                                                                 @endphp
                                                                 <button type="button" class="m-1 btn btn-warning btn-circle">
-                                                                    <a href="{{ action([App\Http\Controllers\User\AcceptController::class, 'index'], ['id' => $id,]) }}">  {{ explode(',', $time)[0] }} </a>
+                                                                    <a href="{{ action([App\Http\Controllers\User\AcceptController::class, 'index'], ['id' => $id,]) }}">  {{ explode(',', $info)[1] }} </a>
                                                                 </button>
-                                                            @elseif (explode(',', $time)[1] == config('global.canceled'))
+                                                            @elseif (explode(',', $info)[2] == config('global.canceled'))
                                                                 {{-- <li class="bg-secondary text-white list-group-item">                     --}}
                                                                 @php
                                                                     $state = "annulé";
                                                                 @endphp
                                                                 <button type="button" class="m-1 btn btn-secondary btn-circle">
-                                                                    <a href="{{ action([App\Http\Controllers\User\AcceptController::class, 'index'], ['id' => $id,]) }}">  {{ explode(',', $time)[0] }}</a>
+                                                                    <a href="{{ action([App\Http\Controllers\User\AcceptController::class, 'index'], ['id' => $id,]) }}">  {{ explode(',', $info)[1] }}</a>
                                                                 </button>
-                                                            @elseif (explode(',', $time)[1] == config('global.on_hold'))
+                                                            @elseif (explode(',', $info)[2] == config('global.on_hold'))
                                                                 {{-- <li class="bg-light text-black list-group-item">                     --}}
                                                                 @php
                                                                     $state = "en attente";
                                                                 @endphp
                                                                 <button type="button" class="m-1 btn btn-circle" style="background-color: #E2E6EA;" onmouseover="this.style.background='#D3D7DB'" onmouseout="this.style.background='#E2E6EA'">
-                                                                    <a href="{{ action([App\Http\Controllers\User\AcceptController::class, 'index'], ['id' => $id,]) }}">  {{ explode(',', $time)[0] }}</a>
+                                                                    <a href="{{ action([App\Http\Controllers\User\AcceptController::class, 'index'], ['id' => $id,]) }}">  {{ explode(',', $info)[1] }}</a>
                                                                 </button>
                                                             @endif
                                                             {{-- <p>{{ $state }}</p> --}}
                                                             {{-- <button type="button" class="m-1 btn btn-primary btn-circle">
                                                                 {{ $time }}
                                                             </button> --}}
-                                                        @endforeach
                                                     @endif
                                                 @endforeach
                                             </h5>
